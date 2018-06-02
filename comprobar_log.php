@@ -16,7 +16,7 @@ if($nickResult->num_rows > 0){
     if($pass == $row['pass']){
         if($row['tipo'] == "admin"){
             ?>
-            <form action="lista_encuestas_admin.php" method="post" id="f1" >
+            <form action="encuestasdeladmin.php" method="post" id="f1" >
                 <input type="hidden" name="id_usuario" value="<?php echo $row['id_usuario']?>">
             </form>
             <script type="text/javascript">
@@ -25,7 +25,7 @@ if($nickResult->num_rows > 0){
             <?php
         } else {
              ?>
-            <form action="lista_encuestas_user.php" method="post" id="f2" >
+            <form action="encuestasdelusuario.php" method="post" id="f2" >
                 <input type="hidden" name="id_usuario" value="<?php echo $row['id_usuario']?>">
             </form>
             <script type="text/javascript">
@@ -36,7 +36,7 @@ if($nickResult->num_rows > 0){
     } else {
         $epass = "Contraseña incorrecta";
          ?>
-            <form action="fallo_login.php" method="post" id="f3" >
+            <form action="error_login.php" method="post" id="f3" >
                 <input type="hidden" name="epass" value="<?php echo $epass ?>">
             </form>
             <script type="text/javascript">
@@ -49,7 +49,7 @@ if($nickResult->num_rows > 0){
 } else {
     $enick = "El usuario '".$nick."' no existe";
      ?>
-            <form action="fallo_login.php" method="post" id="f4" >
+            <form action="error_login.php" method="post" id="f4" >
                 <input type="hidden" name="enick" value="<?php echo $enick ?>">
             </form>
             <script type="text/javascript">
