@@ -50,9 +50,9 @@ $resultEncuestas = select($con, "encuesta", "");
                             <div class="col-sm-12">
                                 <div class="encuestac">
                                     <h3><?php echo $row['nombre'] ?></h3>
-                                    <form class="hiddenform" method="post" action="ver_encuesta.php">
+                                    <form class="hiddenform" method="post" action="mostrarencuesta.php">
                                         <input type="hidden" name="id_usuario" value="<?php echo $id_usuario ?>">
-                                        <button type="submit" name="id_encuesta" value="<?php echo $row['id_encuesta'] ?>"  class="btn btn-primary">Ver encuesta</button>
+                                        <button type="submit" name="id_encuesta" value="<?php echo $row['id_encuesta'] ?>"  class="btn btn-primary">ABRIR</button>
                                     </form>
                                 </div>
                                 <hr>
@@ -67,7 +67,7 @@ $resultEncuestas = select($con, "encuesta", "");
         </main>
         <!-- /.container -->
 
-        <form action="nueva_encuesta.php" method="post" id="f2" >
+        <form action="añadirencuesta.php" method="post" id="f2" >
             <input type="hidden" name="id_usuario" value="<?php echo $id_usuario ?>">
         </form>
         
