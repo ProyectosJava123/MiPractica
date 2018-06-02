@@ -32,7 +32,7 @@
 
     <header class="bg-primary text-white">
       <div class="container text-center">
-        <h1>ERROR EN EL LOGIN</h1>
+        <h1>ERROR</h1>
       </div>
     </header>
 
