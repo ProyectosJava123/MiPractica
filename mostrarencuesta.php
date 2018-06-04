@@ -44,15 +44,85 @@ $resultPreguntas = select($con, "pregunta", "WHERE fk_encuesta=".$id_encuesta);
 
     <section id="about">
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
+         <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+            <a class="navbar-brand" href="#">Bienvenido</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:postListaEncuestas();">Mostrar Encuestas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:postNuevaEncuesta();">Añadir Encuestas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">SALIR</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main" class="container">
+
+            <div class="col-md-12 container-fluid ">
+                <div class="row">
+                    <div class="col-sm-12">
+                    <h1><?php echo $encuesta['nombre'] ?></h1>
+                    </div>    
+                    <div class="col-sm-12">    
+                    <hr> 
+                    <form action="eliminar_encuesta.php" method="post" id="eliminar" >
+                        <input type="hidden" name="id_usuario" value="<?php echo $id_usuario ?>">
+                        <button type="submit" name="id_encuesta" value="<?php echo $id_encuesta ?>"  class="btn btn-warning"><stron>Eliminar encuesta</stron></button>
+                    </form>
+                    <hr>
+                    </div>    
+                    <?php 
+    if($resultPreguntas->num_rows > 0){
+        while($row = mysqli_fetch_array($resultPreguntas, MYSQLI_ASSOC)){
+                    ?>
+                    <div class="col-sm-12">
+                        <h3><?php echo $row['texto'] ?></h3>
+                        <br>
+                        <p><strong>Perfecto:</strong> <?php echo getVeces($con, $row['id_pregunta'], "Perfecto")?></p>
+                        <p><strong>Mejorable:</strong> <?php echo getVeces($con, $row['id_pregunta'], "Mejorable")?></p>
+                        <p><strong>Muy mejorable:</strong> <?php echo getVeces($con, $row['id_pregunta'], "Muy mejorable")?></p>
+                        <p><strong>Horrible:</strong> <?php echo getVeces($con, $row['id_pregunta'], "Horrible")?></p>
+
+                        <hr>
+                    </div>
+                    <?php 
+        }
+    }
+                    ?>  
+                </div>
+            </div>
+
+        </main>
+        <!-- /.container -->
+
+        <form action="encuestasdeladmin.php" method="post" id="f2" >
+            <input type="hidden" name="id_usuario" value="<?php echo $id_usuario ?>">
+        </form>
+
+        <form action="añadirencuesta.php" method="post" id="f3" >
+            <input type="hidden" name="id_usuario" value="<?php echo $id_usuario ?>">
+        </form>
+
+        <script type="text/javascript">
+
+            function postListaEncuestas(){
+                document.getElementById('f2').submit(); 
+            }
+
+            function postNuevaEncuesta(){
+                document.getElementById('f3').submit(); 
+            }
+
+        </script>
       
     </section>
 
