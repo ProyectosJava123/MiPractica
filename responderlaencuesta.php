@@ -3,11 +3,11 @@ include("conexion.php");
 $con = conectar();
 $id_usuario = $_POST['id_usuario'];
 $id_encuesta = $_POST['id_encuesta'];
-$resultUsuario = select($con, "usuario", "WHERE id_usuario =".$id_usuario);
-if($resultUsuario->num_rows > 0){
-    $usuario = $resultUsuario->fetch_array(MYSQLI_ASSOC);
+$ResultadoUser = select($con, "usuario", "WHERE id_usuario =".$id_usuario);
+if($ResultadoUser->num_rows > 0){
+    $usuario = $ResultadoUser->fetch_array(MYSQLI_ASSOC);
 }
-$resultPreguntas = select($con, "pregunta", "WHERE fk_encuesta=".$id_encuesta);
+$laspreguntas = select($con, "pregunta", "WHERE fk_encuesta=".$id_encuesta);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,8 +63,8 @@ $resultPreguntas = select($con, "pregunta", "WHERE fk_encuesta=".$id_encuesta);
                     <form  class="formlarge" action="responder.php" method="post">
                         <input type="hidden" name="id_usuario" value="<?php echo $id_usuario ?>">
                     <?php 
-    if($resultPreguntas->num_rows > 0){
-        while($row = mysqli_fetch_array($resultPreguntas, MYSQLI_ASSOC)){
+    if($laspreguntas->num_rows > 0){
+        while($row = mysqli_fetch_array($laspreguntas, MYSQLI_ASSOC)){
 
                     ?>
                     <div class="col-sm-12">

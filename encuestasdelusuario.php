@@ -2,11 +2,11 @@
 include("conexion.php");
 $con = conectar();
 $id_usuario = $_POST['id_usuario'];
-$resultUsuario = select($con, "usuario", "WHERE id_usuario =".$id_usuario);
-if($resultUsuario->num_rows > 0){
-    $usuario = $resultUsuario->fetch_array(MYSQLI_ASSOC);
+$ResultadoUsuario = select($con, "usuario", "WHERE id_usuario =".$id_usuario);
+if($ResultadoUsuario->num_rows > 0){
+    $usuario = $ResultadoUsuario->fetch_array(MYSQLI_ASSOC);
 }
-$resultEncuestas = select($con, "encuesta", "");
+$ResultadoDeEncuesta = select($con, "encuesta", "");
 ?>
 
 <!DOCTYPE html>
@@ -59,8 +59,8 @@ $resultEncuestas = select($con, "encuesta", "");
             <div class="col-md-12 container-fluid ">
                         <div class="row">
                             <?php 
-                            if($resultEncuestas->num_rows > 0){
-                                while($row = mysqli_fetch_array($resultEncuestas, MYSQLI_ASSOC)){
+                            if($ResultadoDeEncuesta->num_rows > 0){
+                                while($row = mysqli_fetch_array($ResultadoDeEncuesta, MYSQLI_ASSOC)){
 
                             ?>
                             <div class="col-sm-12">

@@ -3,20 +3,18 @@ include("conexion.php");
 $con = conectar();
 $id_usuario = $_POST['id_usuario'];
 $nombre = $_POST['nombre'];
-$p1 = $_POST['p1'];
-$p2 = $_POST['p2'];
-$p3 = $_POST['p3'];
-$p4 = $_POST['p4'];
-$p5 = $_POST['p5'];
+$pregunta1 = $_POST['pregunta1'];
+$pregunta2 = $_POST['pregunta2'];
+$pregunta3 = $_POST['pregunta3'];
 
 insert($con, "encuesta", "nombre", "'$nombre'");
-$rsEncuesta =  select($con, "encuesta order by id_encuesta DESC limit 1", "");
-if($rsEncuesta->num_rows > 0){
-    $encuesta = $rsEncuesta->fetch_array(MYSQLI_ASSOC);
+$ResultadoEncuesta =  select($con, "encuesta order by id_encuesta DESC limit 1", "");
+if($ResultadoEncuesta->num_rows > 0){
+    $encuesta = $ResultadoEncuesta->fetch_array(MYSQLI_ASSOC);
     $id_encuesta = $encuesta['id_encuesta'];
-    insert($con, "pregunta","texto, fk_encuesta","'$p1', ".$id_encuesta);
-    insert($con, "pregunta","texto, fk_encuesta","'$p2', ".$id_encuesta);
-    insert($con, "pregunta","texto, fk_encuesta","'$p3', ".$id_encuesta);
+    insert($con, "pregunta","texto, fk_encuesta","'$pregunta1', ".$id_encuesta);
+    insert($con, "pregunta","texto, fk_encuesta","'$pregunta2', ".$id_encuesta);
+    insert($con, "pregunta","texto, fk_encuesta","'$pregunta3', ".$id_encuesta);
 }
 
 ?>

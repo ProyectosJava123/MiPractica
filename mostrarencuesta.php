@@ -77,7 +77,6 @@ $resultPreguntas = select($con, "pregunta", "WHERE fk_encuesta=".$id_encuesta);
                     <form action="borrarencuesta.php" method="post" id="eliminar" >
                         <input type="hidden" name="id_usuario" value="<?php echo $id_usuario ?>">
                         <button type="submit" name="id_encuesta" value="<?php echo $id_encuesta ?>"  class="btn btn-danger"><stron>ELIMINAR</stron></button>
-                        
                     </form>
                     <hr>
                     </div>    
