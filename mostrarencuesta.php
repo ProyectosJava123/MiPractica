@@ -74,9 +74,10 @@ $resultPreguntas = select($con, "pregunta", "WHERE fk_encuesta=".$id_encuesta);
                     </div>    
                     <div class="col-sm-12">    
                     <hr> 
-                    <form action="eliminar_encuesta.php" method="post" id="eliminar" >
+                    <form action="borrarencuesta.php" method="post" id="eliminar" >
                         <input type="hidden" name="id_usuario" value="<?php echo $id_usuario ?>">
-                        <button type="submit" name="id_encuesta" value="<?php echo $id_encuesta ?>"  class="btn btn-warning"><stron>Eliminar encuesta</stron></button>
+                        <button type="submit" name="id_encuesta" value="<?php echo $id_encuesta ?>"  class="btn btn-danger"><stron>ELIMINAR</stron></button>
+                        
                     </form>
                     <hr>
                     </div>    
